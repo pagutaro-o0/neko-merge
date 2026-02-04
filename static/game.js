@@ -1,4 +1,4 @@
-const { Engine, Render, Runner, Bodies, Body, Composite, Events, Vector } = Matter;
+const { Engine, Render, Runner, Bodies, Composite, Events, Vector } = Matter;
 
 const worldCanvas = document.getElementById("world");
 const overlayCanvas = document.getElementById("overlay");
@@ -58,7 +58,7 @@ function resize() {
   W = Math.floor(boxW);
   H = Math.floor(boxH);
 
-  worldCanvas.width = W;
+ worldCanvas.width = W;
 worldCanvas.height = H;
 overlayCanvas.width = W;
 overlayCanvas.height = H;

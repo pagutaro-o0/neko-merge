@@ -18,3 +18,10 @@ button { padding:8px 12px; }
 #overlay{
   pointer-events: none; /* overlayはクリックを邪魔しない */
 }
+body{ margin:0; font-family:system-ui,sans-serif; background:#111; color:#fff; }
+#ui{ display:flex; gap:16px; padding:12px; align-items:center; }
+#gameWrap{ display:flex; justify-content:center; align-items:center; height: calc(100vh - 56px); }
+
+#stage{ position:relative; }
+#world{ display:block; }              /* ←これ大事（サイズが見える） */
+#overlay{ position:absolute; left:0; top:0; pointer-events:none; }
