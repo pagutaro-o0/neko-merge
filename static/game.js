@@ -1,6 +1,7 @@
 const { Engine, Render, Runner, Bodies, Body, Composite, Events, Vector } = Matter;
 
-const canvas = document.getElementById("c");
+const worldCanvas = document.getElementById("world");
+const overlayCanvas = document.getElementById("overlay");
 const scoreEl = document.getElementById("score");
 const bestEl = document.getElementById("best");
 const retryBtn = document.getElementById("retry");
@@ -36,10 +37,10 @@ function setupRenderer() {
   if (runner) Runner.stop(runner);
 
   render = Render.create({
-    canvas,
-    engine,
-    options: { wireframes:false, background:"transparent" }
-  });
+  canvas: worldCanvas,
+  engine,
+  options: { wireframes:false, background:"transparent" }
+});
   runner = Runner.create();
   Render.run(render);
   Runner.run(runner, engine);
@@ -57,12 +58,13 @@ function resize() {
   W = Math.floor(boxW);
   H = Math.floor(boxH);
 
-  canvas.width = W;
-  canvas.height = H;
+  worldCanvas.width = W;
+worldCanvas.height = H;
+overlayCanvas.width = W;
+overlayCanvas.height = H;
 
-  render.options.width = W;
-  render.options.height = H;
-
+render.options.width = W;
+render.options.height = H;
   // 危険ライン（上から15%）
   dangerY = H * 0.16;
 
@@ -212,17 +214,16 @@ function onUp(e){
   e.preventDefault();
 }
 
-canvas.addEventListener("mousedown", onDown);
+worldCanvas.addEventListener("mousedown", onDown);
 window.addEventListener("mousemove", onMove);
 window.addEventListener("mouseup", onUp);
-canvas.addEventListener("touchstart", onDown, { passive:false });
+worldCanvas.addEventListener("touchstart", onDown, { passive:false });
 window.addEventListener("touchmove", onMove, { passive:false });
 window.addEventListener("touchend", onUp, { passive:false });
 
 // 見た目（プレビュー＆危険ライン）を描く
 (function drawOverlay(){
-  const ctx = canvas.getContext("2d");
-
+  const ctx = overlayCanvas.getContext("2d");
   function loop(){
     ctx.clearRect(0,0,W,H);
 
