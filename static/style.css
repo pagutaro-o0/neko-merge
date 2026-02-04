@@ -1,27 +1,56 @@
-body { margin:0; font-family: system-ui, sans-serif; background:#111; color:#fff; }
-#ui { display:flex; gap:16px; padding:12px; align-items:center; }
-#gameWrap { display:flex; justify-content:center; align-items:center; height: calc(100vh - 56px); }
-canvas { background: transparent; }
-button { padding:8px 12px; }
+:root{
+  --bg1:#1b1b24;
+  --bg2:#0e0e12;
+  --line:rgba(255,255,255,0.22);
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, sans-serif;
+  color:#fff;
+  background: radial-gradient(circle at 50% 15%, #2b2b3a 0%, var(--bg1) 40%, var(--bg2) 100%);
+}
+
+#ui{
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 14px;
+  gap:12px;
+}
+
+.hud{ display:flex; gap:18px; opacity:0.95; }
+
+button{
+  border:1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:10px;
+}
+
+#gameWrap{
+  height: calc(100vh - 56px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
+}
+
 #stage{
-  position: relative;
-  width: fit-content;
-  height: fit-content;
+  position:relative;
+  border-radius:18px;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+  background: radial-gradient(circle at 50% 25%, rgba(255,255,255,0.05), rgba(0,0,0,0));
 }
 
 #world, #overlay{
-  position: absolute;
-  left: 0;
-  top: 0;
+  position:absolute;
+  left:0; top:0;
 }
 
-#overlay{
-  pointer-events: none; /* overlayはクリックを邪魔しない */
-}
-body{ margin:0; font-family:system-ui,sans-serif; background:#111; color:#fff; }
-#ui{ display:flex; gap:16px; padding:12px; align-items:center; }
-#gameWrap{ display:flex; justify-content:center; align-items:center; height: calc(100vh - 56px); }
-
-#stage{ position:relative; }
-#world{ display:block; }              /* ←これ大事（サイズが見える） */
-#overlay{ position:absolute; left:0; top:0; pointer-events:none; }
+#world{ display:block; }     /* これ重要 */
+#overlay{ pointer-events:none; }

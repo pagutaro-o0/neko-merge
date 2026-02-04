@@ -1,9 +1,6 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <!doctype html>
-<html lang="ja">
-<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ねこねこ合体</title>
@@ -13,41 +10,24 @@
 </head>
 
 <body>
-  <div id="ui">
-    <div>Score: <span id="score">0</span></div>
-    <div>Best: <span id="best">0</span></div>
+  <header id="ui">
+    <div class="hud">
+      <div>Score: <span id="score">0</span></div>
+      <div>Best: <span id="best">0</span></div>
+    </div>
     <button id="retry">Retry</button>
-  </div>
+  </header>
 
-  <div id="gameWrap">
+  <main id="gameWrap">
     <div id="stage">
       <canvas id="world"></canvas>
       <canvas id="overlay"></canvas>
     </div>
-  </div>
+  </main>
 
   <script>
     window.CAT_IMG_URL = "{{ url_for('static', filename='img/cat.png') }}";
   </script>
   <script src="{{ url_for('static', filename='game.js') }}"></script>
-</body>
-</html>
-</head>
-<body>
-  <div id="ui">
-    <div>Score: <span id="score">0</span></div>
-    <div>Best: <span id="best">0</span></div>
-    <button id="retry">Retry</button>
-  </div>
-  <div id="gameWrap">
-  <div id="stage">
-    <canvas id="world"></canvas>
-    <canvas id="overlay"></canvas>
-  </div>
-</div>
-  <script>
-    window.CAT_IMG_URL = "/static/img/cat.png";
-  </script>
-  <script src="/static/game.js"></script>
 </body>
 </html>

@@ -3,7 +3,6 @@ import os
 
 app = Flask(__name__)
 
-# 超ミニ：スコア保存（メモリ。Render再起動で消える）
 BEST = {"score": 0}
 
 @app.get("/")
@@ -23,5 +22,6 @@ def post_best():
     return jsonify(BEST)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5050))  # 5000はAirTunesに取られてるので避ける
+    # Macで 5000 が AirTunes に取られることがあるのでデフォルト5050
+    port = int(os.environ.get("PORT", 5050))
     app.run(host="0.0.0.0", port=port, debug=True)
